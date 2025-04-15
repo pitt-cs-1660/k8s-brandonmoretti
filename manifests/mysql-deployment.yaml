@@ -105,13 +105,13 @@ spec:
       # define volume mounts here, be sure to reference
       # the PVC in your container spec
       ##
-      volumeMounts:
+        volumeMounts:
+          - name: mysql-persistent-storage
+            mountPath: /var/lib/mysql
+      volumes:
         - name: mysql-persistent-storage
-          mountPath: /var/lib/mysql
-    volumes:
-      - name: mysql-persistent-storage
-        persistentVolumeClaim:
-          claimName: mysql-pv-claim
+          persistentVolumeClaim:
+            claimName: mysql-pv-claim
 ---
 ##
 # Create persistent volume claim here
